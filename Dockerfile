@@ -2,7 +2,7 @@ FROM golang:alpine AS builder
 
 LABEL maintainer="metowolf <i@i-meto.com>"
 
-ARG VERSION=1.4
+ARG VERSION=1.6-rc4
 
 RUN apk upgrade \
     && apk add \
@@ -27,6 +27,7 @@ FROM alpine:3.9
 LABEL maintainer="metowolf <i@i-meto.com>"
 
 EXPOSE 53/udp
+EXPOSE 53/tcp
 
 COPY --from=builder /usr/local/bin/* /usr/local/bin/
 COPY docker-entrypoint.sh /usr/local/bin/
